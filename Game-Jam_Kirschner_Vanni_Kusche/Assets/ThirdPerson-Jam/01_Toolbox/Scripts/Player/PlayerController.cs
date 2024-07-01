@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
 
     // Cache the camera transform
     private Transform cameraTransform;
-    
+
+    // NPC can hear
+    public bool isAudible;
 
     // Start is called before the first frame update
     void Start()
@@ -69,5 +71,12 @@ public class PlayerController : MonoBehaviour
             Quaternion targetCharacterRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetCharacterRotation, rotationSpeed * Time.deltaTime);
         }
+
+        // NPC Ears
+        if (speed > 0.5)
+        {
+            isAudible = true;
+        }
+
     }
 }

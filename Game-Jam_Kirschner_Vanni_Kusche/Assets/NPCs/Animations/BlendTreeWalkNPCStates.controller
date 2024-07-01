@@ -76,6 +76,21 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!206 &2397193732983505527
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BlendTree
+  m_Childs: []
+  m_BlendParameter: speed
+  m_BlendParameterY: speed
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 1
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
 --- !u!206 &4528480035169768449
 BlendTree:
   m_ObjectHideFlags: 1
@@ -94,7 +109,7 @@ BlendTree:
     m_DirectBlendParameter: direction
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: a32250b00666e1e47b64e7c3981d8e90,
+    m_Motion: {fileID: -203655887218126122, guid: 85f07743eeb734e4c937e57342a918a1,
       type: 3}
     m_Threshold: 1.8
     m_Position: {x: 0, y: 0}
@@ -103,7 +118,7 @@ BlendTree:
     m_DirectBlendParameter: direction
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: a892845e8117f6a449c59e2afa8be785,
+    m_Motion: {fileID: -203655887218126122, guid: 54717cf0b692976439111bd207d1d604,
       type: 3}
     m_Threshold: 4
     m_Position: {x: 0, y: 0}
@@ -113,7 +128,7 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: speed
   m_BlendParameterY: direction
-  m_MinThreshold: -4
+  m_MinThreshold: 0
   m_MaxThreshold: 4
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
