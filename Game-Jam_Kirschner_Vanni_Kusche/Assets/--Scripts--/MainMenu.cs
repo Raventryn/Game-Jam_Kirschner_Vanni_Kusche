@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
     public void QuitGame()
     {
         Application.Quit();
@@ -14,5 +15,15 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         Time.timeScale = 1;
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void CreditExit()
+    {
+        SceneManager.LoadScene(0);
     }
 }
