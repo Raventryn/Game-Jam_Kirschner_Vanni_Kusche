@@ -14,6 +14,6 @@ public class ZombieAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _foodTracker.foodMeter -= 25f;
+        _foodTracker.foodMeter -= 1f;
     }
 }
