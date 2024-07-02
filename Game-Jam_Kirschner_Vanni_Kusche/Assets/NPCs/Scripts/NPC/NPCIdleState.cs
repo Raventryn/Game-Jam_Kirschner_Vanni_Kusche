@@ -15,6 +15,10 @@ public class NPCIdleState : BaseState
         Debug.Log("NPCIdleState:OnEnterState");
 
         leaveTime = Time.time + UnityEngine.Random.Range(MinWaitTime, MaxWaitTime);
+        NPCStateMachine npcStateMachine = controller as NPCStateMachine;
+
+        //npcStateMachine.SetDestination(Vector3.zero);
+
     }
 
     public override void OnUpdateState(BaseStateMachine controller)
@@ -26,13 +30,9 @@ public class NPCIdleState : BaseState
         // Can see or hear player > Switch to flee
         if(npcStateMachine.CanSeePlayer || npcStateMachine.CanHearPlayer) 
         {
-            npcStateMachine.SwitchToState(npcStateMachine.HideState);
+            npcStateMachine.SwitchToState(npcStateMachine.FollowState);
         }
-        // Time is up > Switch to patrol
-        if(Time.time > leaveTime)
-        {
-            npcStateMachine.SwitchToState(npcStateMachine.PatrolState);
-        }
+
     }
 
     public override void OnExitState(BaseStateMachine controller)

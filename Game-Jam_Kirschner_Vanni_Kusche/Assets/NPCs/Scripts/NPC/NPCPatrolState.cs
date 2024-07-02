@@ -38,12 +38,6 @@ public class NPCPatrolState : BaseState
             npcStateMachine.SwitchToState(npcStateMachine.IdleState);
         }
 
-        // Transitions
-        // Can see player > Switch to flee
-        if (npcStateMachine.CanSeePlayer || npcStateMachine.CanHearPlayer)
-        {
-            npcStateMachine.SwitchToState(npcStateMachine.HideState);
-        }
     }
 
     public override void OnExitState(BaseStateMachine controller)

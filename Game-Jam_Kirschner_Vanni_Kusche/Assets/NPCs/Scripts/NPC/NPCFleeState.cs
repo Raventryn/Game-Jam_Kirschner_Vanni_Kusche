@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class NPCFleeState : BaseState
+ public class NPCFleeState : BaseState
 {
     public float FleeDistance;
 
