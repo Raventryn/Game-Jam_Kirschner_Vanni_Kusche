@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject throwable;
-    private GameObject _player;
     public Transform playerPosition;
+    public float throwForce = 20f;
+    private Vector3 offset = new Vector3(0, 2, 0);
 
 
     // Update is called once per frame
@@ -14,16 +15,60 @@ public class PlayerAttack : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            InstantiateAtPlayerPosition();
+            ThrowItemAtEnemy();
         }
     }
 
-    void InstantiateAtPlayerPosition()
+    void ThrowItemAtEnemy()
     {
         if (throwable != null && playerPosition != null)
         {
-            Instantiate(throwable, playerPosition.position, playerPosition.rotation);
+            GameObject throwItem = Instantiate(throwable, playerPosition.position + offset, playerPosition.rotation);
+
+            GameObject nearestEnemy = FindNearestEnemy();
+            if (nearestEnemy != null)
+            {
+                Vector3 direction = (nearestEnemy.transform.position - playerPosition.position).normalized;
+
+                Rigidbody rb = throwItem.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddForce(direction * throwForce, ForceMode.Impulse);
+                }
+            }
+        }
+    }
+
+    GameObject FindNearestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject nearestEnemy = null;
+        float shortestDistance = Mathf.Infinity;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(playerPosition.position, enemy.transform.position);
+            if(distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+        }
+
+        return nearestEnemy;
+
+      
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(throwable);
             print("yippie");
+        }
+        else
+        {
+            Destroy(throwable);
         }
     }
 }
