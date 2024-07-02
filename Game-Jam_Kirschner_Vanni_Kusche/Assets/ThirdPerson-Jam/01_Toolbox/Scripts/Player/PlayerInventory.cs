@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+
     // how many items to collect?
     public int ItemValueToCollect = 10;
 
@@ -31,4 +32,5 @@ public class PlayerInventory : MonoBehaviour
     {
         collectedItemsLabel.text = CollectedItemsValue + "/" + ItemValueToCollect;
     }
+
 }
