@@ -7,14 +7,34 @@ public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
 
+    public GameObject gameOverMenu;
+
+    public GameObject player;
 
     public bool isPaused;
+
+    public bool isGameOver;
+
+    public FoodTracker _foodTracker;
+
+    private void Start()
+    {
+        _foodTracker = GameObject.Find("Player").GetComponent<FoodTracker>();
+
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame(!isPaused);
+        }
+
+        if (_foodTracker.foodMeter <= 0)
+        {
+            isGameOver = true;
+            gameOverMenu.SetActive(true);
+            Destroy(player);
         }
     }
 

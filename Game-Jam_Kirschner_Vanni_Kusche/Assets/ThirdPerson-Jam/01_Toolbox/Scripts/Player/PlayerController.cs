@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // NPC Ears
-        if (speed > 0.5)
+        if (speed > 0)
         {
             isAudible = true;
         }

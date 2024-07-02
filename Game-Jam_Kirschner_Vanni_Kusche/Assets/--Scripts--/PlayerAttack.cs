@@ -59,16 +59,5 @@ public class PlayerAttack : MonoBehaviour
 
       
     }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(throwable);
-            print("yippie");
-        }
-        else
-        {
-            Destroy(throwable);
-        }
-    }
+ 
 }

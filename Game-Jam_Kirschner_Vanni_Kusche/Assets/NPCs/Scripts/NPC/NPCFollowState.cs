@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class NPCFollowState : BaseState
 {
-   
+
     public float FollowDistance;
 
     private Vector3 _followPosition;
@@ -35,6 +35,7 @@ public class NPCFollowState : BaseState
         {
             npcStateMachine.SwitchToState(npcStateMachine.IdleState);
         }
+       
     }
 
     public override void OnExitState(BaseStateMachine controller)
