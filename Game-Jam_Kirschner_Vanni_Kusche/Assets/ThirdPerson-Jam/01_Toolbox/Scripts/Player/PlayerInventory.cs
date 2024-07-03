@@ -30,7 +30,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void UpdateHUD() 
     {
-        collectedItemsLabel.text = CollectedItemsValue + "/" + ItemValueToCollect;
+        //collectedItemsLabel.text = CollectedItemsValue + "/" + ItemValueToCollect;
     }
 
 }
