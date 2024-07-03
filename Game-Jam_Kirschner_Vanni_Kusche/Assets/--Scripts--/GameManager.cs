@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
 
+    public GameObject tutorial;
+
     public bool isPaused;
 
     public bool isGameOver;
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _foodTracker = GameObject.Find("Player").GetComponent<FoodTracker>();
+
+        tutorial.SetActive(true);
 
     }
 
@@ -36,8 +40,13 @@ public class GameManager : MonoBehaviour
             gameOverMenu.SetActive(true);
             Destroy(player);
         }
-    }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            tutorial.SetActive(false);
+        }
+
+    }
     public void PauseGame(bool doPause)
     {
         isPaused = doPause;
@@ -56,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         Time.timeScale = 1;
     }
 
@@ -64,5 +73,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void StartGameAfterIntro()
+    {
+        SceneManager.LoadScene(2);
+    }
+   
 
 }
