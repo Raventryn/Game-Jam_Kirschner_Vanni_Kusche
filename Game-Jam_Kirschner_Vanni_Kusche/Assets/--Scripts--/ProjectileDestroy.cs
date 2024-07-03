@@ -8,7 +8,7 @@ public class ProjectileDestroy : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Floor"))
         {
             Destroy(gameObject);
             print("yippie");
