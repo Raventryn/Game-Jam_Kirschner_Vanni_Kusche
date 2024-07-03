@@ -11,9 +11,12 @@ public class Item : MonoBehaviour
 
     public float rotationSpeed = 30;
 
+    private AudioSource _audioSource;
+
     private void Start()
     {
         _foodTracker = GameObject.Find("Player").GetComponent<FoodTracker>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -23,13 +26,17 @@ public class Item : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<PlayerInventory>() != null) 
+
+        if (other.GetComponent<PlayerInventory>() != null) 
         {
             other.GetComponent<PlayerInventory>().ItemCollected(ItemValue);
             Destroy(gameObject);
 
             _foodTracker.foodMeter += 50f;
+            
         }
+
+       
 
     }
 }

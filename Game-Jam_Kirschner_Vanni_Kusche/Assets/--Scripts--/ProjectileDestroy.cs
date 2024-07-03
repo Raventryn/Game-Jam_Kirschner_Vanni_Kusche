@@ -8,9 +8,12 @@ public class ProjectileDestroy : MonoBehaviour
 
     public FoodTracker _foodTracker;
 
+    private AudioSource _audioSource;
+
     void Start()
     {
         _foodTracker = GameObject.Find("Player").GetComponent<FoodTracker>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -19,6 +22,7 @@ public class ProjectileDestroy : MonoBehaviour
         {
             Destroy(gameObject);
             print("yippie");
+            _audioSource.Play();
         }
 
         if(other.CompareTag("Enemy"))
