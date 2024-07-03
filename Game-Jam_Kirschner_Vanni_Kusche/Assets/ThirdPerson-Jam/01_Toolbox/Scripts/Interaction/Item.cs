@@ -6,7 +6,6 @@ public class Item : MonoBehaviour
 {
     public FoodTracker _foodTracker;
 
-    // How valuable the item is
     public int ItemValue = 1;
 
     public float rotationSpeed = 30;
@@ -30,13 +29,18 @@ public class Item : MonoBehaviour
         if (other.GetComponent<PlayerInventory>() != null) 
         {
             other.GetComponent<PlayerInventory>().ItemCollected(ItemValue);
-            Destroy(gameObject);
-
-            _foodTracker.foodMeter += 50f;
+            _audioSource.Play();
             
+            _foodTracker.foodMeter += 30f;
+
+            StartCoroutine(DestroyAfterSound());
+
         }
+    }
+    private IEnumerator DestroyAfterSound()
+    {
+        yield return new WaitForSeconds(_audioSource.clip.length);
 
-       
-
+        Destroy(gameObject);
     }
 }

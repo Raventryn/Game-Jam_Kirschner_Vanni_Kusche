@@ -18,7 +18,7 @@ public class ZombieAttack : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            _foodTracker.foodMeter -= 15f;
+            _foodTracker.foodMeter -= 10f;
             _audioSource.Play();
 
         }

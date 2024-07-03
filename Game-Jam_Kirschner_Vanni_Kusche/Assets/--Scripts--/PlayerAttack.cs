@@ -8,7 +8,12 @@ public class PlayerAttack : MonoBehaviour
     public Transform playerPosition;
     public float throwForce = 20f;
     private Vector3 offset = new Vector3(0, 2, 0);
+    private AudioSource _audioSource;
 
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             ThrowItemAtEnemy();
+            _audioSource.Play();
         }
     }
 

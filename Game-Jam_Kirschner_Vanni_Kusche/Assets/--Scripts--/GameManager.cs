@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
             Destroy(player);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
         {
             tutorial.SetActive(false);
         }

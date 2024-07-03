@@ -15,7 +15,7 @@ public class FoodTracker : MonoBehaviour
     {
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         foodMeter = 100f;
-        damage = 0.5f;
+        damage = 2f;
     }
 
     // Update is called once per frame
