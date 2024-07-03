@@ -6,12 +6,25 @@ public class ProjectileDestroy : MonoBehaviour
 {
     public bool gotHit;
 
+    public FoodTracker _foodTracker;
+
+    void Start()
+    {
+        _foodTracker = GameObject.Find("Player").GetComponent<FoodTracker>();
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Floor"))
+        if (other.CompareTag("Floor"))
         {
             Destroy(gameObject);
             print("yippie");
+        }
+
+        if(other.CompareTag("Enemy"))
+        {
+            _foodTracker.foodMeter -= 20;
+            Destroy(gameObject);
         }
        
     }

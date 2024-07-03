@@ -16,7 +16,7 @@ public class ZombieAttack : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            _foodTracker.foodMeter -= 25f;
+            _foodTracker.foodMeter -= 15f;
         }
         
 
