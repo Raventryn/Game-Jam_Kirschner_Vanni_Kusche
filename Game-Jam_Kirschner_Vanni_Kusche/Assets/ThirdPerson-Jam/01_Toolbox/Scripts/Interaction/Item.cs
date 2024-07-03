@@ -9,9 +9,16 @@ public class Item : MonoBehaviour
     // How valuable the item is
     public int ItemValue = 1;
 
+    public float rotationSpeed = 30;
+
     private void Start()
     {
         _foodTracker = GameObject.Find("Player").GetComponent<FoodTracker>();
+    }
+
+    private void Update()
+    {
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other)
