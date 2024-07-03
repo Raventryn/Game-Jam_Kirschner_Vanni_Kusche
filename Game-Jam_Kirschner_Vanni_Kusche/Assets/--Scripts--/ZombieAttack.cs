@@ -14,6 +14,12 @@ public class ZombieAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _foodTracker.foodMeter -= 1f;
+        if(other.CompareTag("Player"))
+        {
+            _foodTracker.foodMeter -= 25f;
+        }
+        
+
+        Debug.Log("ich collidiere mit" + other.name);
     }
 }

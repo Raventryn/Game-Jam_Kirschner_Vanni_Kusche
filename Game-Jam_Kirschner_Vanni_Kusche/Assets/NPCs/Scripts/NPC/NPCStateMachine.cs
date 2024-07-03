@@ -6,9 +6,11 @@ public class NPCStateMachine : BaseStateMachine
     public Vector3 PlayerPosition { get => _player.position; }
     public bool CanSeePlayer { get => _eyes.IsDetecting; }
     public bool CanHearPlayer { get => _ears.IsDetecting;  }
+    public bool WasHitted { get => _wasHitted;  }
 
     public NPCIdleState IdleState;
     public NPCFollowState FollowState;
+    public NPCStunnedState StunnedState;
  
 
     private Eyes _eyes;
@@ -19,6 +21,7 @@ public class NPCStateMachine : BaseStateMachine
     private Animator _animator;
 
     private float _initialAgentSpeed;
+    private bool _wasHitted;
 
 
     public override void Initialize()
@@ -38,6 +41,7 @@ public class NPCStateMachine : BaseStateMachine
     public override void Tick()
     {
         _animator.SetFloat("speed", _agent.velocity.magnitude);
+        _wasHitted = false;
     }
 
     public void SetDestination(Vector3 destination) 
@@ -48,6 +52,14 @@ public class NPCStateMachine : BaseStateMachine
     public void SetAgentSpeedMultiplier(float multiplier) 
     {
         _agent.speed = _initialAgentSpeed * multiplier;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Projectile"))
+        {
+            _wasHitted = true;
+        }
     }
 
 }

@@ -35,7 +35,13 @@ public class NPCFollowState : BaseState
         {
             npcStateMachine.SwitchToState(npcStateMachine.IdleState);
         }
-       
+
+        // Hitted by projectile
+        if (npcStateMachine.WasHitted)
+        {
+            npcStateMachine.SwitchToState(npcStateMachine.StunnedState);
+        }
+
     }
 
     public override void OnExitState(BaseStateMachine controller)
