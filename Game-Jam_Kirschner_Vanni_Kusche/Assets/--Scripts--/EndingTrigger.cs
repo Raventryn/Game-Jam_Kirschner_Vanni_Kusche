@@ -29,13 +29,19 @@ public class EndingTrigger : MonoBehaviour
         if (other.CompareTag("Player") && _foodTracker.foodMeter <= 30)
         {
             loseScreen.SetActive(true);
+
+            Time.timeScale = 0;
         }
 
         if (other.CompareTag("Player") && _foodTracker.foodMeter >= 30)
         {
             wonScreen.SetActive(true);
             print("yes");
+
+            Time.timeScale = 0;
         }
+
+
 
     }
 
